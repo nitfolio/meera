@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meera M — Quality Manager & Agile Coach</title>
+  <link rel="icon" type="image/jpeg" href="pictures/profile_pic.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+
+  <style>
+    :root[data-theme="dark"] {
+      --bg: #0a0a0a;
+      --bg2: #111111;
+      --surface: #1a1a1a;
+      --surface2: #222222;
+      --text: #f0ede8;
+      --text-muted: #888880;
+      --border: #2a2a2a;
+      --accent: #e11d48;
+      --accent-light: #fb7185;
+      --accent-glow: rgba(225, 29, 72, 0.18);
+      --nav-bg: rgba(10, 10, 10, 0.92);
+    }
+    :root[data-theme="light"] {
+      --bg: #fafaf9;
+      --bg2: #f5f4f2;
+      --surface: #ffffff;
+      --surface2: #f0ede8;
+      --text: #18181b;
+      --text-muted: #71717a;
+      --border: #e4e4e7;
+      --accent: #e11d48;
+      --accent-light: #be123c;
+      --accent-glow: rgba(225, 29, 72, 0.10);
+      --nav-bg: rgba(250, 250, 249, 0.92);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.35s ease, color 0.35s ease;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      height: 64px;
+      transition: background 0.35s ease, border-color 0.35s ease;
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 2px; background: var(--accent);
+      transition: width 0.25s ease;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links a.active { color: var(--text); }
+
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+
+    #theme-toggle {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 50%; width: 38px; height: 38px;
+      cursor: pointer; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s ease;
+      color: var(--text-muted);
+    }
+    #theme-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: scale(1.08);
+    }
+
+    .hamburger {
+      display: none; background: none; border: none;
+      cursor: pointer; flex-direction: column; gap: 5px; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--text); border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 100px clamp(1.5rem, 7vw, 6rem) 60px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 55%; height: 100%;
+      background: radial-gradient(ellipse at 80% 40%, var(--accent-glow) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: 'QM';
+      position: absolute; right: -0.02em; bottom: -0.1em;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(10rem, 22vw, 22rem);
+      color: transparent;
+      -webkit-text-stroke: 1px var(--border);
+      pointer-events: none; user-select: none;
+      line-height: 1;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: center;
+      width: 100%; max-width: 1200px;
+      position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent);
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      opacity: 0; animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 32px; height: 2px; background: var(--accent);
+    }
+    h1.hero-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 0.7s ease forwards 0.25s;
+    }
+    h1.hero-name span { color: var(--accent); }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      font-weight: 300; line-height: 1.65;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+      opacity: 0; animation: fadeUp 0.7s ease forwards 0.4s;
+    }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem;
+      margin-bottom: 2.5rem;
+      opacity: 0; animation: fadeUp 0.7s ease forwards 0.5s;
+    }
+    .stat-item { text-align: left; }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem; color: var(--accent); line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-muted); margin-top: 2px;
+    }
+
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.7s ease forwards 0.6s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.85rem 2rem;
+      font-family: 'Syne', sans-serif; font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; border: none; cursor: pointer;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+      transition: all 0.22s ease;
+    }
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: scale(1.03);
+      box-shadow: 0 8px 28px var(--accent-glow);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      padding: 0.85rem 2rem;
+      font-family: 'Syne', sans-serif; font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+      transition: all 0.22s ease;
+    }
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: scale(1.03);
+    }
+
+    /* Hero photo */
+    .hero-photo-col {
+      opacity: 0; animation: fadeIn 0.9s ease forwards 0.3s;
+      position: relative;
+    }
+    .hero-photo-col::before {
+      content: '';
+      position: absolute; top: -16px; right: -16px;
+      width: 100%; height: 100%;
+      border: 2px solid var(--accent);
+      clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+      z-index: 0;
+    }
+    .hero-photo {
+      width: 100%; max-width: 420px;
+      aspect-ratio: 4/5;
+      object-fit: cover; object-position: center top;
+      clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+      display: block; position: relative; z-index: 1;
+      filter: grayscale(15%) contrast(1.05);
+      transition: filter 0.3s ease;
+    }
+    .hero-photo:hover { filter: grayscale(0%) contrast(1.1); }
+
+    /* ─── SECTIONS SHARED ─── */
+    section {
+      padding: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 7vw, 6rem);
+      max-width: 1200px; margin: 0 auto;
+    }
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent);
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .section-label::before {
+      content: ''; display: block;
+      width: 24px; height: 2px; background: var(--accent);
+    }
+    h2.section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: 0.04em;
+      line-height: 1; margin-bottom: 3rem;
+      color: var(--text);
+    }
+
+    /* REVEAL animation */
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── ABOUT ─── */
+    #about { border-top: 1px solid var(--border); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start;
+    }
+    .about-text p {
+      font-size: 1.05rem; line-height: 1.8;
+      color: var(--text-muted); margin-bottom: 1.25rem;
+    }
+    .about-text p strong { color: var(--text); font-weight: 500; }
+    .about-highlights {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .highlight-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      transition: all 0.25s ease;
+    }
+    .highlight-item:hover {
+      background: var(--surface2);
+      transform: translateX(6px);
+      box-shadow: 4px 0 24px var(--accent-glow);
+    }
+    .highlight-item .h-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.25rem;
+    }
+    .highlight-item .h-val {
+      font-size: 0.95rem; color: var(--text); font-weight: 500;
+    }
+
+    /* ─── EXPERIENCE ─── */
+    #experience { border-top: 1px solid var(--border); background: var(--bg2); max-width: 100%; }
+    #experience .inner { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.5rem, 7vw, 6rem); }
+    .exp-timeline { position: relative; padding-left: 2rem; }
+    .exp-timeline::before {
+      content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
+      width: 1px; background: var(--border);
+    }
+    .exp-item {
+      position: relative; padding-left: 2rem; margin-bottom: 3rem;
+    }
+    .exp-item::before {
+      content: ''; position: absolute; left: -2.4rem; top: 10px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-glow);
+    }
+    .exp-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; flex-wrap: wrap; gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+    .exp-role {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem; font-weight: 700; color: var(--text);
+    }
+    .exp-period {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem; font-weight: 400;
+      color: var(--accent); letter-spacing: 0.08em;
+      background: var(--accent-glow); padding: 3px 10px; border-radius: 2px;
+      white-space: nowrap;
+    }
+    .exp-company {
+      font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.85rem;
+      font-weight: 500; letter-spacing: 0.04em;
+    }
+    .exp-bullets { list-style: none; }
+    .exp-bullets li {
+      font-size: 0.92rem; color: var(--text-muted);
+      line-height: 1.65; padding-left: 1.2rem; position: relative;
+      margin-bottom: 0.4rem;
+    }
+    .exp-bullets li::before {
+      content: '▸'; position: absolute; left: 0;
+      color: var(--accent); font-size: 0.7rem; top: 3px;
+    }
+
+    /* ─── SKILLS ─── */
+    #skills { border-top: 1px solid var(--border); }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      transition: all 0.25s ease;
+      clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+    }
+    .skill-group:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 30px var(--accent-glow);
+      transform: translateY(-4px);
+    }
+    .skill-group-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-tag {
+      font-size: 0.8rem; padding: 4px 12px;
+      background: var(--bg); border: 1px solid var(--border);
+      color: var(--text-muted);
+      transition: all 0.2s ease; cursor: default;
+    }
+    .skill-tag:hover {
+      background: var(--accent); border-color: var(--accent);
+      color: #fff; transform: scale(1.04);
+    }
+
+    /* ─── CERTIFICATIONS ─── */
+    #certifications { border-top: 1px solid var(--border); background: var(--bg2); max-width: 100%; }
+    #certifications .inner { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.5rem, 7vw, 6rem); }
+    .cert-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .cert-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      transition: all 0.25s ease;
+    }
+    .cert-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px var(--accent-glow);
+    }
+    .cert-icon {
+      font-size: 1.6rem; flex-shrink: 0;
+      width: 44px; height: 44px;
+      background: var(--accent-glow);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cert-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.88rem; font-weight: 700; color: var(--text);
+      line-height: 1.3;
+    }
+
+    /* ─── EDUCATION ─── */
+    #education { border-top: 1px solid var(--border); }
+    .edu-item {
+      display: flex; gap: 2rem; align-items: flex-start;
+      padding: 1.75rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      max-width: 600px;
+      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+      transition: all 0.25s ease;
+    }
+    .edu-item:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 30px var(--accent-glow);
+    }
+    .edu-year {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem; color: var(--accent); line-height: 1;
+      flex-shrink: 0; min-width: 60px;
+    }
+    .edu-degree { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--text); }
+    .edu-school { font-size: 0.88rem; color: var(--text-muted); margin-top: 0.25rem; }
+    .edu-grade { font-size: 0.82rem; color: var(--accent); margin-top: 0.4rem; font-weight: 500; }
+
+    /* ─── CONTACT ─── */
+    #contact { border-top: 1px solid var(--border); text-align: center; }
+    #contact .inner { max-width: 640px; margin: 0 auto; }
+    .contact-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      letter-spacing: 0.04em; line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .contact-sub {
+      font-size: 1rem; color: var(--text-muted);
+      line-height: 1.7; margin-bottom: 2.5rem;
+    }
+    .contact-cta {
+      display: inline-block;
+      background: var(--accent); color: #fff;
+      padding: 1rem 2.5rem;
+      font-family: 'Syne', sans-serif; font-size: 0.9rem;
+      font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      text-decoration: none;
+      clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+      transition: all 0.22s ease;
+      margin-bottom: 2.5rem;
+    }
+    .contact-cta:hover {
+      transform: scale(1.04);
+      box-shadow: 0 10px 36px var(--accent-glow);
+    }
+    .social-links { display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap; }
+    .social-link {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none;
+      border: 1px solid var(--border); padding: 0.6rem 1.25rem;
+      transition: all 0.2s ease;
+    }
+    .social-link:hover {
+      border-color: var(--accent); color: var(--accent);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem clamp(1.5rem, 7vw, 6rem);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+      font-size: 0.78rem; color: var(--text-muted);
+    }
+    footer strong { color: var(--accent); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-photo-col { order: -1; max-width: 300px; }
+      .hero-photo { aspect-ratio: 1/1; }
+      .about-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: fixed; top: 64px; left: 0; right: 0;
+        background: var(--nav-bg); backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem 2rem;
+        gap: 1.25rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero-stats { gap: 1.5rem; }
+      .hero-actions { flex-direction: column; }
+      .btn-primary, .btn-secondary { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">MM</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<div id="hero" class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Quality Manager · Agile Coach · Process Consultant</div>
+      <h1 class="hero-name">Meera<br><span>M.</span></h1>
+      <p class="hero-tagline">
+        15+ years driving quality transformation across Healthcare, Automotive, and BFSI sectors. Certified Scaled Agilist with a passion for building resilient systems and high-performing teams.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">15+</div>
+          <div class="stat-label">Years XP</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">40+</div>
+          <div class="stat-label">BFSI Accounts</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">1200+</div>
+          <div class="stat-label">People Impacted</div>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Get In Touch</a>
+        <a href="#experience" class="btn-secondary">View Experience</a>
+      </div>
+    </div>
+    <div class="hero-photo-col">
+      <img src="pictures/profile_pic.jpg" alt="Meera M" class="hero-photo" />
+    </div>
+  </div>
+</div>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="reveal">
+    <div class="section-label">About Me</div>
+    <h2 class="section-title">Who I Am</h2>
+  </div>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>
+        I'm a <strong>Quality Manager and Agile Coach</strong> currently at Siemens Advanta, where I own quality across two sub-segments — Audiology and Advantest — while leading the Office of Agile Practices and envisioning the future QMS with GenAI use cases.
+      </p>
+      <p>
+        Over the past 15+ years, I've worked across <strong>Healthcare, Automotive, BFSI, and Telecom</strong> sectors, applying frameworks like CMMI, ISO 9001, ISO 27001, ISO 13485, SSAE 18, LEAN, Six Sigma, SAFe, and Scrum to drive real, measurable outcomes.
+      </p>
+      <p>
+        I'm a natural <strong>storyteller</strong> with strong communication skills — I believe that great quality culture is built as much through narrative and coaching as it is through process and compliance.
+      </p>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight-item">
+        <div class="h-label">Current Role</div>
+        <div class="h-val">Quality Manager @ Siemens Advanta</div>
+      </div>
+      <div class="highlight-item">
+        <div class="h-label">Location</div>
+        <div class="h-val">Bangalore, India</div>
+      </div>
+      <div class="highlight-item">
+        <div class="h-label">Domains</div>
+        <div class="h-val">Healthcare · BFSI · Automotive · Telecom</div>
+      </div>
+      <div class="highlight-item">
+        <div class="h-label">Languages</div>
+        <div class="h-val">English · Kannada · Hindi · Tamil</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXPERIENCE ─── -->
+<div id="experience" style="background: var(--bg2); padding: clamp(4rem, 8vw, 8rem) 0;">
+  <div class="inner">
+    <div class="reveal">
+      <div class="section-label">Career</div>
+      <h2 class="section-title">Experience</h2>
+    </div>
+    <div class="exp-timeline">
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <div class="exp-role">Quality Manager</div>
+          <span class="exp-period">Oct 2023 – Present</span>
+        </div>
+        <div class="exp-company">Siemens Advanta (Siemens Technology and Services Pvt. Ltd.)</div>
+        <ul class="exp-bullets">
+          <li>Own Quality across two sub-segments — Audiology and Advantest</li>
+          <li>Lead the Office of Agile Practices (OOAP) through agility events and conferences</li>
+          <li>Envisioning future QMS with GenAI use cases to drive next-gen quality</li>
+          <li>Drive Quality Community of Practice (CoP) to foster innovation across the org</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <div class="exp-role">Associate Principal – Quality & Delivery Excellence</div>
+          <span class="exp-period">Aug 2022 – Sep 2023</span>
+        </div>
+        <div class="exp-company">LTIMindtree</div>
+        <ul class="exp-bullets">
+          <li>LEAN SPOC for the BFS vertical, championing first-time-right mindset</li>
+          <li>Led process digitization leveraging advanced tooling for efficiency</li>
+          <li>Contract & SOW review ensuring alignment with standards and commitments</li>
+          <li>Governance & Knowledge Management across the BFS delivery teams</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <div class="exp-role">Manager – Quality & Delivery Excellence</div>
+          <span class="exp-period">May 2020 – Jul 2022</span>
+        </div>
+        <div class="exp-company">LTIMindtree</div>
+        <ul class="exp-bullets">
+          <li>Consulted 40+ BFSI accounts, impacting 1,200+ personnel over 4 years</li>
+          <li>Drove risk assessments ensuring compliance with BCP, InfoSec, and Data Privacy</li>
+          <li>Guided value stream mapping to instill LEAN mindset and eliminate waste</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <div class="exp-role">Senior Quality Officer & Agile Transformation Catalyst</div>
+          <span class="exp-period">Aug 2019 – Jan 2020</span>
+        </div>
+        <div class="exp-company">Nagravision India Pvt. Ltd.</div>
+        <ul class="exp-bullets">
+          <li>Led agile transformation and delivered Agile & Scaled Agile training</li>
+          <li>Restructured QMS to support organizational changes</li>
+          <li>Defined agile metrics and promoted technical agility and code quality</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <div class="exp-role">Department Quality Specialist</div>
+          <span class="exp-period">Jan 2019 – Jul 2019</span>
+        </div>
+        <div class="exp-company">Robert Bosch</div>
+        <ul class="exp-bullets">
+          <li>Gap analysis w.r.t. ASPICE and preparation for certification</li>
+          <li>Trained quality analysts on Agile and Scaled Agile frameworks</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <div class="exp-role">Specialist – Corporate Quality</div>
+          <span class="exp-period">Aug 2014 – May 2016</span>
+        </div>
+        <div class="exp-company">Philips India Ltd.</div>
+        <ul class="exp-bullets">
+          <li>Maintained QMS and supported Scaled Agile deployment across Philips India</li>
+          <li>Automated metrics analysis and monitored performance via balanced scorecard</li>
+          <li>Managed ISO 13485 certification for medical device quality compliance</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <div class="exp-role">Lead – Corporate Quality</div>
+          <span class="exp-period">Oct 2011 – Oct 2013</span>
+        </div>
+        <div class="exp-company">Tata Elxsi Ltd.</div>
+        <ul class="exp-bullets">
+          <li>Defined and tailored processes to evolving project needs</li>
+          <li>Monitored performance via balanced scorecard and analyzed metrics</li>
+          <li>Delivered training across engineering, project management, metrics, and configuration</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <div class="exp-role">Software Quality Assurance Engineer</div>
+          <span class="exp-period">Oct 2007 – Dec 2010</span>
+        </div>
+        <div class="exp-company">Tata Elxsi Ltd.</div>
+        <ul class="exp-bullets">
+          <li>Guided QA activities: project planning, defect prevention, process compliance</li>
+          <li>Implemented SPC methodologies and supported risk identification</li>
+          <li>Performed delivery/release certifications and conducted RCA for deviations</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ─── SKILLS ─── -->
+<section id="skills">
+  <div class="reveal">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">Skills & Frameworks</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group reveal">
+      <div class="skill-group-title">Quality Frameworks</div>
+      <div class="skill-tags">
+        <span class="skill-tag">CMMI</span>
+        <span class="skill-tag">ISO 9001</span>
+        <span class="skill-tag">ISO 27001</span>
+        <span class="skill-tag">ISO 13485</span>
+        <span class="skill-tag">SSAE 18</span>
+        <span class="skill-tag">ASPICE</span>
+        <span class="skill-tag">QMS Design</span>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-title">Agile & Delivery</div>
+      <div class="skill-tags">
+        <span class="skill-tag">SAFe</span>
+        <span class="skill-tag">Scrum</span>
+        <span class="skill-tag">Agile Coaching</span>
+        <span class="skill-tag">Scaled Agile</span>
+        <span class="skill-tag">OKRs</span>
+        <span class="skill-tag">Agile Metrics</span>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-title">Process Improvement</div>
+      <div class="skill-tags">
+        <span class="skill-tag">LEAN</span>
+        <span class="skill-tag">Six Sigma</span>
+        <span class="skill-tag">Value Stream Mapping</span>
+        <span class="skill-tag">SPC</span>
+        <span class="skill-tag">RCA</span>
+        <span class="skill-tag">Process Re-engineering</span>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-title">Compliance & Risk</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Risk Assessment</span>
+        <span class="skill-tag">BCP</span>
+        <span class="skill-tag">InfoSec Compliance</span>
+        <span class="skill-tag">Data Privacy</span>
+        <span class="skill-tag">Internal Audits</span>
+        <span class="skill-tag">SOW Review</span>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-title">Leadership & Coaching</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Team Coaching</span>
+        <span class="skill-tag">Training Delivery</span>
+        <span class="skill-tag">Stakeholder Management</span>
+        <span class="skill-tag">Storytelling</span>
+        <span class="skill-tag">Change Management</span>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-title">Industry Domains</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Healthcare</span>
+        <span class="skill-tag">BFSI</span>
+        <span class="skill-tag">Automotive</span>
+        <span class="skill-tag">Telecom</span>
+        <span class="skill-tag">IT Services</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CERTIFICATIONS ─── -->
+<div id="certifications" style="background: var(--bg2); padding: clamp(4rem, 8vw, 8rem) 0;">
+  <div class="inner">
+    <div class="reveal">
+      <div class="section-label">Credentials</div>
+      <h2 class="section-title">Certifications</h2>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card reveal">
+        <div class="cert-icon">🏆</div>
+        <div class="cert-name">Certified Scaled Agilist (SAFe)</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">🔒</div>
+        <div class="cert-name">ISO 9001 Auditor</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">🛡️</div>
+        <div class="cert-name">ISO 27001 Auditor</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">📐</div>
+        <div class="cert-name">LEAN Practitioner</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">⚡</div>
+        <div class="cert-name">Six Sigma Trained</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">📋</div>
+        <div class="cert-name">PMP Trained</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── EDUCATION ─── -->
+<section id="education">
+  <div class="reveal">
+    <div class="section-label">Academic</div>
+    <h2 class="section-title">Education</h2>
+  </div>
+  <div class="reveal">
+    <div class="edu-item">
+      <div class="edu-year">2006</div>
+      <div>
+        <div class="edu-degree">Master of Science — Computer Science</div>
+        <div class="edu-school">Manasa Gangotri, University of Mysore</div>
+        <div class="edu-grade">CGPA 4.5 / 5 &nbsp;·&nbsp; ~90%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="inner reveal" style="max-width: 640px; margin: 0 auto; text-align: center;">
+    <div class="section-label" style="justify-content: center;">Let's Connect</div>
+    <h2 class="contact-title">Ready to<br><span style="color: var(--accent);">Work Together?</span></h2>
+    <p class="contact-sub">
+      Whether you're looking for a seasoned Quality Manager, an Agile Coach to lead transformation, or a consultant to streamline your processes — let's talk.
+    </p>
+    <a href="mailto:meeramknd@gmail.com" class="contact-cta">Get In Touch</a>
+    <div class="social-links">
+      <a href="mailto:meeramknd@gmail.com" class="social-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Email
+      </a>
+      <a href="https://www.linkedin.com/in/meeramknd" class="social-link" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://www.google.com/maps?q=Bangalore,India" class="social-link" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Bangalore, IN
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div>© 2025 <strong>Meera M</strong> — Quality Manager & Agile Coach</div>
+  <div>Bangalore, India</div>
+</footer>
+
+<script>
+  // Theme toggle
+  const toggle = document.getElementById('theme-toggle');
+  const saved = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+  toggle.textContent = saved === 'dark' ? '☀️' : '🌙';
+  toggle.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    toggle.textContent = next === 'dark' ? '☀️' : '🌙';
+  });
+
+  // Hamburger
+  const ham = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  ham.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        const siblings = e.target.parentElement.querySelectorAll('.reveal');
+        let delay = 0;
+        siblings.forEach((s, idx) => { if (s === e.target) delay = idx * 80; });
+        setTimeout(() => e.target.classList.add('visible'), delay);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navAs = document.querySelectorAll('.nav-links a');
+  const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navAs.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => scrollObserver.observe(s));
+</script>
+</body>
+</html>
